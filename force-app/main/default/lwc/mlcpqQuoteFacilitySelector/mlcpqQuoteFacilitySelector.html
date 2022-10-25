@@ -1,0 +1,40 @@
+<template>
+    <div class="header-div">
+
+        <lightning-combobox
+                name="progress"
+                placeholder="Select Product"
+                options={products}
+                class="product-dropdown"
+                onchange={onProductSelect}
+                variant="label-hidden"></lightning-combobox>
+        <template if:true={isLoading}>
+            <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+            </lightning-spinner>
+        </template>
+    </div>
+
+    <div>
+        <div class="select-table">
+            <c-mlcpq-custom-table
+                    data-table="select-table"
+                    key-field="index"
+                    data={qllData}
+                    oncellchange={onSelectChange}
+                    suppress-bottom-bar
+                    show-row-number-column
+                    row-number-offset={rowOffset}
+                    columns={columns}
+                    class="slds-table--header-fixed"
+                    onfragmentedpricechange={onFragmentedPriceChange}
+                    sorted-by={sortField}
+                    sorted-direction={sortDirection}
+                    onsort={updateColumnSorting}>
+            </c-mlcpq-custom-table>
+        </div>
+    </div>
+    <div>
+        <c-mlcpq-paginator page-number={pageNumber} page-size={pageSize} total-items={totalItems} row-offset={rowOffset} if:true={showPager} onpagechanged= {onPageChange}></c-mlcpq-paginator>
+    </div>
+    <span data-selector="textRuler" class="text-ruler"></span>
+</template>

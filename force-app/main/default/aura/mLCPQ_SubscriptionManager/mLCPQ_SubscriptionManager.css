@@ -1,0 +1,193 @@
+.THIS .disabled {
+    pointer-events: none;
+}
+
+.THIS .disabled lightning-primitive-cell-factory::after {
+    content: '-';
+    display: flex;
+    justify-content: space-around;
+}
+
+.THIS .disabled * button {
+    display: none;
+}
+
+.THIS .disabled * div.slds-combobox {
+    display: none;
+}
+
+.THIS c-mlcpq-quote-facility-selector tbody tr td:nth-child(1) {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    z-index: 88;
+    left: 0;
+    width: 52px;
+    background: white;
+}
+
+.THIS c-mlcpq-quote-facility-selector tbody tr td:nth-child(2) {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    z-index: 88;
+    left: 52px;
+    width: 32px;
+    background: white;
+}
+
+.THIS c-mlcpq-quote-facility-selector tbody tr td:nth-child(4) {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    z-index: 88;
+    left: 184px;
+    width: 400px;
+    background: white;
+}
+
+.THIS c-mlcpq-quote-facility-selector tbody tr th:nth-child(3) {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    z-index: 88;
+    left: 84px;
+    width: 100px;
+    background: white;
+}
+
+.THIS c-mlcpq-quote-facility-selector thead tr th:nth-child(1) {
+    position: sticky;
+    z-index: 88;
+    left: 0px;
+  /*  top: 303px; */
+}
+
+.THIS c-mlcpq-quote-facility-selector thead tr th:nth-child(2) {
+    position: sticky;
+    z-index: 88;
+    left: 52px;
+    /*  top: 303px;*/
+}
+
+.THIS c-mlcpq-quote-facility-selector thead tr th:nth-child(3) {
+    position: sticky;
+    z-index: 88;
+    left: 84px;
+    /*  top: 303px;*/
+}
+
+.THIS c-mlcpq-quote-facility-selector thead tr th:nth-child(4) {
+    position: sticky;
+    z-index: 88;
+    left: 184px;
+    /* top: 303px;*/
+}
+
+.THIS c-mlcpq-quote-facility-selector thead tr * lightning-primitive-header-actions {
+    display: none;
+}
+
+
+
+.THIS c-mlcpq-quote-facility-selector thead tr th * .slds-cell-fixed {
+    position: sticky;
+}
+
+
+.THIS c-mlcpq-quote-facility-selector .slds-scrollable_x {
+    padding-top: 0;
+    overflow-y: scroll;
+}
+
+.THIS c-mlcpq-quote-facility-selector .slds-scrollable_y {
+    overflow-y: unset !important;
+    overflow: unset !important;
+}
+
+.THIS .cell-combo * .slds-truncate {
+    overflow: visible !important;
+    display: flex;
+    align-items: center;
+}
+
+.THIS .select-table * .slds-scrollable_y {
+  height: calc(100vh - 432px);
+}
+
+.THIS .select-table {
+}
+
+/*
+.THIS table tr td:first-child {
+    position:absolute;
+    left: 0;
+    z-index: 1
+}*/
+
+
+.THIS c-mlcpq-quote-billing-start-date-editor tbody tr td:nth-child(1) {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    z-index: 88;
+    left: 0;
+    width: 52px;
+    background: white;
+}
+
+.THIS c-mlcpq-quote-billing-start-date-editor tbody tr th:nth-child(2) {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    z-index: 88;
+    left: 52px;
+    width: 100px;
+    background: white;
+}
+
+.THIS c-mlcpq-quote-billing-start-date-editor tbody tr td:nth-child(3) {
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    z-index: 88;
+    left: 152px;
+    width: 400px;
+    background: white;
+}
+
+
+.THIS c-mlcpq-quote-billing-start-date-editor thead tr th:nth-child(1) {
+    position: sticky;
+    z-index: 88;
+    left: 0px;
+    /*  top: 303px; */
+}
+
+.THIS c-mlcpq-quote-billing-start-date-editor thead tr th:nth-child(2) {
+    position: sticky;
+    z-index: 88;
+    left: 52px;
+    /*  top: 303px;*/
+}
+
+.THIS c-mlcpq-quote-billing-start-date-editor thead tr th:nth-child(3) {
+    position: sticky;
+    z-index: 88;
+    left: 152px;
+    /*  top: 303px;*/
+}
+
+.THIS c-mlcpq-quote-billing-start-date-editor thead tr * lightning-primitive-header-actions {
+    display: none;
+}
+
+
+
+.THIS c-mlcpq-quote-billing-start-date-editor thead tr th * .slds-cell-fixed {
+    position: sticky;
+}
+
+
+.THIS c-mlcpq-quote-billing-start-date-editor .slds-scrollable_x {
+    padding-top: 0;
+    overflow-y: scroll;
+}
+
+.THIS c-mlcpq-quote-billing-start-date-editor .slds-scrollable_y {
+    overflow-y: unset !important;
+    overflow: unset !important;
+}

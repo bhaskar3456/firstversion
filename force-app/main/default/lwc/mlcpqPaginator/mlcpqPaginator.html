@@ -1,0 +1,19 @@
+<template>
+    <lightning-layout class="paginator">
+        <lightning-layout-item class="paginator-item-small">
+            <lightning-button label="First" onclick={onFirst} disabled={prevDisabled}></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item class="paginator-item">
+            <lightning-button icon-name="utility:chevronleft" onclick={onPrev} disabled={prevDisabled}></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item class="paginator-item">
+            {fromItem}-{toItem} of {totalItems}
+        </lightning-layout-item>
+        <lightning-layout-item class="paginator-item-small">
+            <lightning-button icon-name="utility:chevronright" icon-position="right" onclick={onNext} disabled={nextDisabled}></lightning-button>
+        </lightning-layout-item>
+        <lightning-layout-item>
+            <lightning-button label="Last" icon-position="right" onclick={onLast} disabled={nextDisabled}></lightning-button>
+        </lightning-layout-item>
+    </lightning-layout>
+</template>

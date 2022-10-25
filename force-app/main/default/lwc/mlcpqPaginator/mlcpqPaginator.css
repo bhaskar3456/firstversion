@@ -1,0 +1,14 @@
+.paginator {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    margin-right: 27px;
+}
+
+.paginator-item {
+    margin-right: 10px;
+}
+
+.paginator-item-small {
+    margin-right: 5px;
+}

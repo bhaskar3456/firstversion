@@ -1,0 +1,8 @@
+<aura:component implements="lightning:isUrlAddressable" description="mLCPQ_SubscriptionManager">
+        <aura:attribute name="quoteId" type="String" />
+        <aura:handler name="init" value="{!this}" action="{!c.onPageReferenceChange}"/>
+        <aura:handler name="change" value="{!v.pageReference}" action="{!c.onPageReferenceChange}"/>
+
+        <div aura:id="container">
+        </div>
+</aura:component>

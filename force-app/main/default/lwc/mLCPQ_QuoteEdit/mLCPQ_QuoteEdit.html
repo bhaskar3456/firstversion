@@ -1,0 +1,53 @@
+<template>
+    <div if:true={isReady} class="header-div">
+        <lightning-button label="Done" title="Non-primary action" onclick={onDoneClick}></lightning-button>
+        <lightning-button label="Cancel" title="Non-primary action" onclick={onCancelClick}></lightning-button>
+    </div>
+    <div if:false={isReady} class="error-div">
+        {errorMsg} <a onclick={showErrorDetails}>Details</a>
+        <div if:true={showDetails} class="error-div">
+            {errorMessage}
+        </div>
+    </div>
+
+    <template if:true={isLoading}>
+        <lightning-spinner alternative-text="Loading" variant="brand" size="large">
+        </lightning-spinner>
+    </template>
+    <lightning-tabset if:true={isReady} variant="vertical"  >
+        <lightning-tab label="Select" onactive={tableTypeChange}>
+            <div data-table='mlcpqSelectTableCareTypes'>
+                <lightning-tabset variant="scoped" >
+                    <lightning-tab for:each={careTypes} for:item="careType" onfilterchange={filterChange}
+                                   key={careType} value={careType} label={careType} onactive={onCareTypeChange}>
+                        <div data-table={careType}>
+                            <c-mlcpq-quote-facility-selector account-id={accountId} quote-id={quoteId} care-type={careType} show-icons={showIcons}>
+                            </c-mlcpq-quote-facility-selector>
+                        </div>
+                    </lightning-tab>
+                </lightning-tabset>
+            </div>
+        </lightning-tab>
+        <lightning-tab label="Dates" onactive={tableTypeChange}>
+            <div data-table='mlcpqDateTableCareTypes'>
+                <lightning-tabset variant="scoped">
+                    <lightning-tab for:each={careTypes} for:item="careType" onfilterchange={filterChange}
+                                   key={careType} value={careType} label={careType} onactive={onDateCareTypeChange}>
+                        <div data-table={careType}>
+                            <c-mlcpq-quote-billing-start-date-editor account-id={accountId} quote-id={quoteId} care-type={careType}
+                                                                     initial-page={selectedFiler.selectedPage} initial-sort-field={selectedFiler.selectedSortField}
+                                                                     inital-sort-direction={selectedFiler.selectedSortDirection}>
+                            </c-mlcpq-quote-billing-start-date-editor>
+                        </div>
+                    </lightning-tab>
+                </lightning-tabset>
+            </div>
+        </lightning-tab>
+        <lightning-tab label="ProServ" onactive={tableTypeChange}>
+            <div data-table='mlcpqProServTable'>
+                <c-mlcpq-pro-serv quote-id={quoteId}>
+                </c-mlcpq-pro-serv>
+            </div>
+        </lightning-tab>
+    </lightning-tabset>
+</template>

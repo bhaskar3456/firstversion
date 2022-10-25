@@ -1,0 +1,42 @@
+.header-div {
+    display: flex;
+    flex-direction: row-reverse;
+    padding-bottom: 10px;
+}
+
+.header-div * {
+    padding-left: 10px;
+}
+
+.THIS .disabled {
+    background-color: red !important;
+    fill: red !important;
+    font-size: 30px !important;
+    color: red !important;
+}
+
+
+.THIS .disabled svg{
+    fill: red !important;
+    font-size: 30px !important;
+    color: red !important;
+}
+
+.disabled {
+    background-color: yellow !important;
+    fill: yellow !important;
+    font-size: 30px !important;
+    color: red !important;
+}
+
+
+.disabled svg{
+    fill: yellow !important;
+    font-size: 30px !important;
+    color: red !important;
+}
+
+.slds-theme_offline {
+    font-size: 30px;
+    color: yellow;
+}

@@ -1,0 +1,112 @@
+<apex:page title="Price Waterfall" applyBodyTag="False" applyHtmlTag="False" showHeader="false" standardStylesheets="false" sidebar="false" docType="html-5.0">
+<html xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <head>
+        <apex:slds />
+        <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/jsforce/1.7.0/jsforce.min.js" />
+        <apex:includeScript value="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.3/Chart.min.js"/>  
+    </head>
+    <body>
+        <div class="slds-scope">
+            <div class="slds-page-header">
+                <div class="slds-media">
+                    <div class="slds-media__figure">
+                        <span class="slds-icon_container slds-icon-standard-poll">
+                            <svg class="slds-icon slds-page-header__icon" aria-hidden="true">
+                                <use xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="{!URLFOR($Asset.SLDS, '/assets/icons/standard-sprite/svg/symbols.svg#poll')}" />
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="slds-media__body">
+                        <h1 class="slds-page-header__title slds-truncate slds-align-middle" title="Price Analyzer">Price Waterfall</h1>
+                        <p class="slds-text-body_small slds-line-height_reset">{!$CurrentPage.parameters.SBQQ__ProductName__c}</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="demo-only demo-only--sizing slds-grid slds-wrap">
+                
+
+                <!-- History Chart -->
+                <div class="slds-size_1-of-1">
+                    <!--div aria-hidden="false" class="slds-section__content" style="height:350px; width:99%"-->
+                                <canvas id="myChart" height="100%"></canvas>
+                         
+                        <!--/div-->
+                </div>
+                
+             </div>
+            
+            <script>
+                var ctx = document.getElementById('myChart').getContext('2d');
+        var myChart = new Chart(ctx, {
+            type: 'horizontalBar',
+            data: {
+                labels: ['List Price', 'System Adjustments', 'Regular Price', 'Additional Discount', 'Customer Price', 'Partner Discount',
+                'Partner Price', 'Distributor Discount', 'Distributor Price', 'Net Price', 'Cost of Goods Sold', 'Freight', 'Rebate', 'Pocket Margin'],
+                datasets: [{
+                    label: '$ (USD)',
+                    data: [{!$CurrentPage.parameters.SBQQ__ListPrice__c},
+                        [{!$CurrentPage.parameters.SBQQ__RegularPrice__c},{!$CurrentPage.parameters.SBQQ__ListPrice__c}],
+                        {!$CurrentPage.parameters.SBQQ__RegularPrice__c},
+                        [{!$CurrentPage.parameters.SBQQ__CustomerPrice__c},{!$CurrentPage.parameters.SBQQ__RegularPrice__c}],
+                        {!$CurrentPage.parameters.SBQQ__CustomerPrice__c},
+                        [{!$CurrentPage.parameters.SBQQ__PartnerPrice__c},{!$CurrentPage.parameters.SBQQ__CustomerPrice__c}],
+                        {!$CurrentPage.parameters.SBQQ__PartnerPrice__c},
+                        [{!$CurrentPage.parameters.SBQQ__NetPrice__c},{!$CurrentPage.parameters.SBQQ__PartnerPrice__c}],
+                        {!$CurrentPage.parameters.SBQQ__NetPrice__c},{!$CurrentPage.parameters.SBQQ__NetPrice__c},
+                        [{!$CurrentPage.parameters.SBQQ__NetPrice__c}-{!$CurrentPage.parameters.SBQQ__UnitCost__c},{!$CurrentPage.parameters.SBQQ__NetPrice__c}],
+                        [{!$CurrentPage.parameters.SBQQ__NetPrice__c}-{!$CurrentPage.parameters.SBQQ__UnitCost__c},{!$CurrentPage.parameters.SBQQ__NetPrice__c}-{!$CurrentPage.parameters.SBQQ__UnitCost__c}-{!$CurrentPage.parameters.Freight__c}],
+                        [{!$CurrentPage.parameters.SBQQ__NetPrice__c}-{!$CurrentPage.parameters.SBQQ__UnitCost__c}-{!$CurrentPage.parameters.Freight__c},{!$CurrentPage.parameters.SBQQ__NetPrice__c}-{!$CurrentPage.parameters.SBQQ__UnitCost__c}-{!$CurrentPage.parameters.Freight__c}-{!$CurrentPage.parameters.Rebate__c}],
+                        {!$CurrentPage.parameters.SBQQ__NetPrice__c}-{!$CurrentPage.parameters.SBQQ__UnitCost__c}-{!$CurrentPage.parameters.Freight__c}-{!$CurrentPage.parameters.Rebate__c}],
+                    backgroundColor: [
+                        'rgba(12,142,255, 1)',
+                        'rgba(0,57,107, 1)',
+                        'rgba(12,142,255, 1)',
+                        'rgba(0,57,107, 1)',
+                        'rgba(12,142,255, 1)',
+                        'rgba(0,57,107, 1)',
+                        'rgba(12,142,255, 1)',
+                        'rgba(0,57,107, 1)',
+                        'rgba(12,142,255, 1)',
+                        'rgba(12,142,255, 1)',
+                        'rgba(0,57,107, 1)',
+                        'rgba(0,57,107, 1)',
+                        'rgba(0,57,107, 1)',
+                        'rgba(12,142,255, 1)',
+                        'rgba(0,57,107, 1)'
+                    ],
+                    borderColor: [
+                        'rgba(12,142,255, 1)',
+                        'rgba(0,57,107, 1)',
+                        'rgba(12,142,255, 1)',
+                        'rgba(0,57,107, 1)',
+                        'rgba(12,142,255, 1)',
+                        'rgba(0,57,107, 1)',
+                        'rgba(12,142,255, 1)',
+                        'rgba(0,57,107, 1)',
+                        'rgba(12,142,255, 1)',
+                        'rgba(12,142,255, 1)',
+                        'rgba(0,57,107, 1)',
+                        'rgba(0,57,107, 1)',
+                        'rgba(0,57,107, 1)',
+                        'rgba(12,142,255, 1)',
+                        'rgba(0,57,107, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+            </script>
+        </div>
+    </body>
+</html>
+</apex:page>
